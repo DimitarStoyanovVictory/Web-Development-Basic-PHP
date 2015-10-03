@@ -1,0 +1,97 @@
+body {
+    background-image: url('../images/profile.jpg');
+    background-size: 2000px 1000px;
+    background-repeat: no-repeat;
+}
+
+#profileSettings {
+    background-color: #F7F7F7;
+    margin-top: 100px;
+    margin-left: 1500px;
+    padding-left: 20px;
+    font-size: 30px;
+    width: 300px;
+    height: 400px;
+    border-radius: 30px;
+}
+
+#profileHeader, #role, #initialCash {
+    color: #494949;
+    font-size: 40px;
+}
+
+#profileHeader {
+    padding-top: 20px;
+}
+
+#products {
+    background-color: #f7f7f7;
+    position: relative;
+    bottom: 400px;
+    margin-left: 200px;
+    width: 800px;
+    height: 400px;
+    border-radius: 30px;
+}
+
+#products a {
+    display: block;
+}
+
+#products h1 {
+    color: #494949;
+    padding-top: 20px;
+    margin-left: 100px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+#bookArticle {
+    position: relative;
+    left: 100px;
+    top: 10px;
+}
+
+#cosmeticsArticle {
+    position: relative;
+    top: 10px;
+}
+
+#electricsArticle {
+    position: relative;
+    left: 160px;
+    bottom: 236px;
+}
+
+#flowersArticle {
+    position: relative;
+    left: 160px;
+    bottom: 226px;
+}
+
+#foodArticle {
+    position: relative;
+    left: 300px;
+    bottom: 472px;
+}
+
+#medicineArticle {
+    position: relative;
+    left: 300px;
+    bottom: 460px;
+}
+
+#householdArticle {
+    position: absolute;
+    left: 440px;
+    bottom: 590px;
+}
+
+#otherArticle {
+    position: absolute;
+    left: 440px;
+    bottom: 460px;
+}

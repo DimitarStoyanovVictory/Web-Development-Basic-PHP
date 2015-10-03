@@ -1,4 +1,5 @@
 <?php
+session_start();
 spl_autoload_register(function($className) {
     $classPathSplitted = explode('\\', $className);
     $vendor = $classPathSplitted[0];
@@ -9,7 +10,6 @@ spl_autoload_register(function($className) {
         throw new \Exception("No such Controller");
     }
 
-    var_dump($classPath);
     require_once $classPath . '.php';
 });
 
@@ -30,9 +30,9 @@ ShoppingCart\Database::setInstance(
 );
 
 /**
- * 'REQUEST_URI' 'WDB-Project/index.php'
- * 'SCRIPT_NAME' 'WDB-Project/index.php'
- * 'PHP_SELF' 'WDB-Project/index.php'
+ * 'REQUEST_URI' 'WDB-Project/Remland.php'
+ * 'SCRIPT_NAME' 'WDB-Project/Remland.php'
+ * 'PHP_SELF' 'WDB-Project/Remland.php'
  */
 
 $scriptName = explode('/', $_SERVER['SCRIPT_NAME']);
@@ -48,42 +48,30 @@ foreach ($scriptName as $k => $v) {
 }
 
 $actionIndex = $controllerIndex + 1;
-
 $controllerName = $requestUri[$controllerIndex];
-$actionName = $requestUri[$actionIndex];
 
-$controllerClassName = '\\Shoppingcart\\Controllers\\'
-    . ucfirst($controllerName)
-    . 'Controller';
-
-$view = new \ShoppingCart\View($controllerName, $actionName);
-
-try {
-    $controller = new $controllerClassName($view);
-} catch (\Exeption $e) {
-    echo "No such controller";
+if ($controllerName == "Remaland.com") {
+    $ViewHomepage = new \ShoppingCart\View($controllerName);
+    $ViewHomepage->render();
 }
+else {
+    $actionName = $requestUri[$actionIndex];
 
-if (!method_exists($controller, $actionName)) {
-    die("No such action");
+    $controllerClassName = '\\Shoppingcart\\Controllers\\'
+        .ucfirst($controllerName)
+        .'Controller';
+
+    $view = new \ShoppingCart\View($controllerName, $actionName);
+    try {
+        $controller = new $controllerClassName($view, $controllerName);
+    } catch (\Exeption $e) {
+        echo "No such controller";
+    }
+
+    if (!method_exists($controller, $actionName)) {
+        die("No such action");
+    }
+
+    $controller->$actionName();
+    $view->render();
 }
-
-$controller->$actionName();
-$view->render();
-
-//$user = ShoppingCart\Repositories\UserRepository::create()
-//    ->getOneByDetails('insomnia', '123');
-//    //37693cfc748049e45d87b8c7d8b9aacd
-//$user->setPassword('234');
-//$user->save();
-
-//ShoppingCart\Database::getInstance()
-//    ->query("INSERT INTO users (firstName, middleName, lastName, username, password)
-//      VALUES (?, ?, ?, ?, ?);
-//    ", [
-//        'Dimitar',
-//        'Dimitrov',
-//        'Stoyanov',
-//        'Dimitar Dimitrov Stoyanov',
-//        md5('222')
-//    ]);
