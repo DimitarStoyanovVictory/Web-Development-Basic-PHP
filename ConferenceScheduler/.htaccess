@@ -1,0 +1,22 @@
+SetEnv CONFIGNAME Base
+
+
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule !\.(js|ico|gif|jpg|png|css)$ index.php [NC,L]
+
+#<IfModule mod_rewrite.c>
+#    RewriteEngine On
+#    RewriteCond %{REQUEST_URI} !^/Content/.*$
+#    RewriteCond %{REQUEST_URI} !^/favicon\.ico$
+#    RewriteRule ^ index.php
+#</IfModule>
+#
+#RewriteEngine on
+#RewriteBase /basic_test/
+#
+#RewriteRule ^index.php$ test.php
