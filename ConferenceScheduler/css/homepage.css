@@ -1,0 +1,25 @@
+body {
+    background-image: url('../images/homepage.jpg');
+    background-size: 1550px, 1800px;
+    background-repeat: no-repeat;
+    overflow:hidden;
+}
+
+#confScheduler {
+    font-size: 4em;
+    color: black;
+    margin-left: 560px;
+}
+
+#login, #register {
+    position: relative;
+    bottom: 60px;
+    margin-left: 1260px;
+    color: black;
+    font-size: 2.4em;
+}
+
+#register {
+    margin-left: 20px;
+}
+

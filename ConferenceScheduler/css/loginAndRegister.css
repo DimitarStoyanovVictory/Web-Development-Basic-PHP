@@ -1,0 +1,33 @@
+body {
+    background-image: url('../images/login&register.jpg');
+    background-size: 1600px 1000px;
+    background-repeat: no-repeat;
+}
+
+.loginWrapper {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 2%;
+}
+
+.tabledata {
+    font-size: 3em;
+    padding-bottom: 60px;
+    color:white;
+}
+
+.inputTags {
+    width: 600px;
+    height: 60px;
+    padding-left: 20px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    font-size: 2em;
+}
+
+#invalidDetails {
+    padding-left: 260px;
+    font-size: 40px;
+    padding-bottom: 60px;
+}

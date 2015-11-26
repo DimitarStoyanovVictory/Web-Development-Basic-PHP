@@ -71,4 +71,9 @@ class User
     {
         return UserRepository::create()->save($this);
     }
+
+    public function redirect()
+    {
+        require_once('Views/home/homepage.php');
+    }
 }

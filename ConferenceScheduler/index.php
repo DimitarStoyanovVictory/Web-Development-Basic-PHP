@@ -7,9 +7,9 @@ spl_autoload_register(function($className) {
     $classPath = str_replace($vendor . '\\', '', $className);
 
     $classPath = str_replace('\\', '/', $classPath);
-//    if(!is_readable($classPath . '.php')) {
-//        throw new \Exception("No such Controller");
-//    }
+    if(!is_readable($classPath . '.php')) {
+        throw new \Exception("No such Controller");
+    }
 
     require_once $classPath . '.php';
 });
@@ -77,15 +77,23 @@ foreach ($scriptName as $k => $v)
 $actionIdnex = $controllerIndex + 1;
 
 $controllerName = $requestUri[$controllerIndex];
-$actionName = $requestUri[$actionIdnex];
 
-var_dump($controllerName);
-var_dump($actionName) ;
+if ($controllerName == 'ConfScheduler.com')
+{
+    require_once 'Views/home/homepage.php';
+}
+else
+{
+    $actionName = $requestUri[$actionIdnex];
+    $controllerClassName = '\\ConferenceScheduler\\Controllers\\'
+        . ucfirst($controllerName)
+        . 'Controller';
 
-$controllerClassName = '\\ConferenceScheduler\\Controllers\\'
-    . ucfirst($controllerName)
-    . 'Controller';
+    $view = new \ConferenceScheduler\View($controllerName, $actionName);
 
-$controller = new $controllerClassName();
-$controller->$actionName();
+    $controller = new $controllerClassName($view, $controllerName);
+    $controller->$actionName();
+
+    $view->render();
+}
 
