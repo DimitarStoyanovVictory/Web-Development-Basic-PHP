@@ -39,19 +39,41 @@ class UserRepository
             return false;
         }
 
-        return $this->getOne($result['id']);
+        return $this->getOneById($result['id']);
     }
 
     /**
      * @param $id
      * @return bool|User
      */
-    public function getOne($id)
+    public function getOneById($id)
     {
         $query = "SELECT id, username, password, role
         FROM users WHERE id = ?";
 
         $this->db->query($query, [$id]);
+
+        $result = $this->db->row();
+
+        if(empty($result))
+        {
+            return false;
+        }
+
+        return new User(
+            $result['username'],
+            $result['password'],
+            $result['role'],
+            $result['id']
+        );
+    }
+
+    public function getOneByUsername($username)
+    {
+        $query = "SELECT id, username, password, role
+        FROM users WHERE username = ?";
+
+        $this->db->query($query, [$username]);
 
         $result = $this->db->row();
 
@@ -97,6 +119,36 @@ class UserRepository
                 $row['id']
             );
         }
+    }
+
+    public function getAllConfAdmins()
+    {
+        $query = "SELECT id, username, password, role
+        FROM users WHERE role = ?";
+
+        $this->db->query($query, ['conference administrator']);
+
+        $result = $this->db->row();
+
+        if(empty($result))
+        {
+            return false;
+        }
+
+        $result = $this->db->fetchAll();
+        $collection = [];
+
+        foreach ($result as $row)
+        {
+            $collection[] = new User(
+                $row['username'],
+                $row['password'],
+                $row['role'],
+                $row['id']
+            );
+        }
+
+        return $collection;
     }
 
     public function save(User $user)

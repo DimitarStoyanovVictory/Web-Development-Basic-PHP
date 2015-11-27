@@ -2,6 +2,8 @@
 
 namespace ConferenceScheduler;
 
+use ConferenceScheduler\Repositories\UserRepository;
+
 class Request
 {
     private $params;
@@ -19,5 +21,15 @@ class Request
     public function __get($name)
     {
         return $this->params[$name];
+    }
+
+    public static function CurrentUser()
+    {
+        return UserRepository::create()->getOne($_SESSION['id']);
+    }
+
+    public static function getAllConfAdmins()
+    {
+        return UserRepository::create()->getAllConfAdmins();
     }
 }

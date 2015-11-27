@@ -31,7 +31,7 @@
                     </td>
                 </tr>
             </tr>
-        <?php endif; ?>
+            <?php endif; ?>
         </table>
         <?php else: ?>
             <h1>Welcome <?=$this->user; ?></h1>

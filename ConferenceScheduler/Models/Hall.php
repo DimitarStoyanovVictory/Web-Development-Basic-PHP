@@ -4,11 +4,11 @@ namespace ConferenceScheduler\Models;
 
 class Hall
 {
-    private $_floorNumber;
+    private $floorNumber;
 
-    private $_number;
+    private $number;
 
-    private $_usersLimit;
+    private $usersLimit;
 
     public function __construct($floorNumber, $number, $usersLimit)
     {

@@ -9,6 +9,10 @@ class Controller
 
     protected $controllerName;
 
+    protected $conferencesAdministrators;
+
+    protected $conferences;
+
     public function __construct(\ConferenceScheduler\View $view,
         \ConferenceScheduler\Request $request, $name)
     {

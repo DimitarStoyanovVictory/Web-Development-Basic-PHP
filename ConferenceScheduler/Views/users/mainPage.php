@@ -11,7 +11,8 @@
                 <h2 id="userLogged">Welcome <?php echo $_SESSION['username']?></h2>
                 <a href="profile" id="profile">Profile</a>
                 <a href="logout" id="logout">Logout</a>
-                <a href="conferences" id="conferences">Conferences</a>
+                <a href="../conferences/allConferences" id="allConferences">List Conferences</a>
+                <a href="../conferences/createConferences" id="createConferences">Create conference</a>
             </article>
         </section>
     </main>

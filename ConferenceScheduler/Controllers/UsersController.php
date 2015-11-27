@@ -1,6 +1,8 @@
 <?php
+
 namespace ConferenceScheduler\Controllers;
 
+use ConferenceScheduler\Models\Conference;
 use ConferenceScheduler\Repositories\UserRepository;
 use ConferenceScheduler\Models\User;
 
@@ -19,14 +21,14 @@ class UsersController extends Controller
                 $password
             );
 
-            $_SESSION['check'] = $user->getUsername();
-
             if (!$user) {
                 $this->view->error = 'Invalid details';
                 return;
             }
 
             $_SESSION['username'] = $user->getUsername();
+            $_SESSION['id'] = $user->getId();
+
             $this->view->user = $user->getUsername();
             $this->redirect('users', 'mainPage');
         }
@@ -63,11 +65,13 @@ class UsersController extends Controller
 //        $this
     }
 
-    public function conferences()
+    public function allConferences()
     {
-        $this->redirect('conferences', 'allConferences');
     }
 
+    public function createConferences()
+    {
+    }
 
     public function logout()
     {

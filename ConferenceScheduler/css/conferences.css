@@ -1,0 +1,27 @@
+body {
+    background-image: url('../images/allConferences.jpg');
+    background-size: 1600px 1000px;
+    background-repeat: no-repeat;
+}
+
+.headerTitle
+{
+    margin-left:600px;
+    margin-top:80px;
+    color:white;
+    font-size:40px;
+}
+
+#formAddAdministrators
+{
+    margin-left: 100px;
+}
+
+.tabledata
+{
+    color: white;
+}
+
+
+
+
