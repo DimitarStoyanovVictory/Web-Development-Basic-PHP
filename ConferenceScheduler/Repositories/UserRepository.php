@@ -27,7 +27,7 @@ class UserRepository
 
     public function getOneByDetails($user, $pass)
     {
-        $query = "SELECT id, username, password
+        $query = "SELECT id, username, password, role
         FROM users WHERE username = ? AND password = ?";
 
         $this->db->query($query, [$user, md5($pass)]);
@@ -48,7 +48,7 @@ class UserRepository
      */
     public function getOne($id)
     {
-        $query = "SELECT id, username, password
+        $query = "SELECT id, username, password, role
         FROM users WHERE id = ?";
 
         $this->db->query($query, [$id]);
@@ -63,6 +63,7 @@ class UserRepository
         return new User(
             $result['username'],
             $result['password'],
+            $result['role'],
             $result['id']
         );
     }
@@ -72,7 +73,7 @@ class UserRepository
      */
     public function getAll()
     {
-        $query = "SELECT id, username, password
+        $query = "SELECT id, username, password, role
         FROM users";
 
         $this->db->query($query);
@@ -92,6 +93,7 @@ class UserRepository
             $collection[] = new User(
                 $row['username'],
                 $row['password'],
+                $row['role'],
                 $row['id']
             );
         }
@@ -99,18 +101,18 @@ class UserRepository
 
     public function save(User $user)
     {
-        $query = "INSERT INTO users (username, password)
-                  VALUES (?, ?)
-        ";
+        $query = "INSERT INTO users (username, password, role)
+                  VALUES (?, ?, ?)";
 
         $params = [
             $user->getUsername(),
-            $user->getPassword()
+            $user->getPassword(),
+            $user->getRole()
         ];
 
         if ($user->getId())
         {
-            $query = "UPDATE users SET username = ?, password = ? WHERE id = ?";
+            $query = "UPDATE users SET username = ?, password = ?, role = ? WHERE id = ?";
             $params[] = $user->getId();
         }
 

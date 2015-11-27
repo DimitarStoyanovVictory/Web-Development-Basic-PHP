@@ -3,11 +3,14 @@
 <head>
     <title>Profile</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/loginAndRegister.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <main>
-    echo <?php $_SESSION['username']?>
-    <section>Welcome <?php $_SESSION['username']?> </section>
+    <section>
+        <article>
+            <h2 id="profileName"><?php echo $_SESSION['username']?> profile</h2>
+        </article>
+    </section>
 </main>
 </body>
 

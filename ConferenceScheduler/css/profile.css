@@ -1,0 +1,12 @@
+body {
+    background-image: url('../images/login&register.jpg');
+    background-size: 1600px 1000px;
+    background-repeat: no-repeat;
+}
+
+#profileName {
+    margin-left: 40%;
+    margin-top: 5%;
+    color:white;
+    font-size: 50px;
+}

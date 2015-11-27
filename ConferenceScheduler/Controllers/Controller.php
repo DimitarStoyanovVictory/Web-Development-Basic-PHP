@@ -5,11 +5,15 @@ class Controller
 {
     protected $view;
 
+    protected $request;
+
     protected $controllerName;
 
-    public function __construct(\ConferenceScheduler\View $view, $name)
+    public function __construct(\ConferenceScheduler\View $view,
+        \ConferenceScheduler\Request $request, $name)
     {
         $this->view = $view;
+        $this->request = $request;
         $this->controllerName = $name;
     }
 

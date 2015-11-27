@@ -42,7 +42,6 @@ class Database
         return $this->stmt->fetchAll();
     }
 
-
     /**
      * @return array
      */

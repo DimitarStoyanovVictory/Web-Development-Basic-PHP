@@ -46,7 +46,6 @@ ConferenceScheduler\Database::setInstance(
 //$user8->save();
 //$user9->save();
 //$user10->save();
-
 //var_dump($user->getUsername());
 
 /**
@@ -90,8 +89,35 @@ else
         . 'Controller';
 
     $view = new \ConferenceScheduler\View($controllerName, $actionName);
+    $request = [];
+//    var_dump($actionIdnex);
+//    var_dump($requestUri);
+//    var_dump(count($request));
+//    for ($key = $actionIdnex +1; $key < count($request); $key += 2)
+//    {
+//        if (!isset($requestUri[$key + 1])) {
+//            break;
+//        }
+//
+//        $request[$requestUri[$key]] = $requestUri[$key];
+////        unset($requestUri[$key + 1]);
+//    }
 
-    $controller = new $controllerClassName($view, $controllerName);
+    foreach($requestUri as $key => $uri) {
+        if ($key <= $actionIdnex)
+        {
+            continue;
+        }
+
+        if (!isset($reqestUri[$key+1])) {
+            break;
+        }
+
+        $request[$requestUri[$key]] = $requestUri[$key];
+    }
+
+    $requestObject = new \ConferenceScheduler\Request($request);
+    $controller = new $controllerClassName($view, $requestObject, $controllerName);
     $controller->$actionName();
 
     $view->render();

@@ -1,0 +1,25 @@
+body {
+    background-image: url('../images/login&register.jpg');
+    background-size: 1600px 1000px;
+    background-repeat: no-repeat;
+}
+
+#userLogged {
+    margin-left: 40%;
+    margin-top: 5%;
+    color:white;
+    font-size: 50px;
+}
+
+#profile {
+    margin-left: 1200px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color:white;
+}
+
+#logout {
+    margin-left: 20px;
+    font-size: 30px;
+    color:white;
+}

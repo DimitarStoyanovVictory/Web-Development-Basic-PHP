@@ -19,6 +19,8 @@ class UsersController extends Controller
                 $password
             );
 
+            $_SESSION['check'] = $user->getUsername();
+
             if (!$user) {
                 $this->view->error = 'Invalid details';
                 return;
@@ -26,7 +28,7 @@ class UsersController extends Controller
 
             $_SESSION['username'] = $user->getUsername();
             $this->view->user = $user->getUsername();
-            $this->redirect('users', 'profile');
+            $this->redirect('users', 'mainPage');
         }
     }
 
@@ -36,8 +38,9 @@ class UsersController extends Controller
         if (isset($_POST['register'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
+            $role = $_POST['role'];
 
-            $user = new User($username, $password);
+            $user = new User($username, $password, $role);
 
             if (!$user->save()) {
                 $this->view->error = 'duplicate users';
@@ -51,9 +54,24 @@ class UsersController extends Controller
     {
     }
 
+    public function mainPage()
+    {
+    }
+
+    public function change()
+    {
+//        $this
+    }
+
+    public function conferences()
+    {
+        $this->redirect('conferences', 'allConferences');
+    }
+
+
     public function logout()
     {
         session_destroy();
-        die;
+        $this->redirect('ConfScheduler.com');
     }
 }
