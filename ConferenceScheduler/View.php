@@ -21,9 +21,10 @@ class View
     {
         $requestUri = explode('/', $_SERVER['REQUEST_URI']);
         $url = "//" . $_SERVER['HTTP_HOST'] . "/";
+
         foreach($requestUri as $k => $uri)
         {
-            if($uri >= $this->controllerName)
+            if ($uri >= $this->controllerName)
             {
                 break;
             }

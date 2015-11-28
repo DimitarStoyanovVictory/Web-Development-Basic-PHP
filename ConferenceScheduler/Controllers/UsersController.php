@@ -11,8 +11,8 @@ class UsersController extends Controller
     public function login()
     {
         $this->view->error = false;
-        $this->view->user = false;
-        if (isset($_POST['login'])) {
+        if (isset($_POST['login']))
+        {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
@@ -29,7 +29,6 @@ class UsersController extends Controller
             $_SESSION['username'] = $user->getUsername();
             $_SESSION['id'] = $user->getId();
 
-            $this->view->user = $user->getUsername();
             $this->redirect('users', 'mainPage');
         }
     }

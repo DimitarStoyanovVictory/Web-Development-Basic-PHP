@@ -1,3 +1,4 @@
+<?php if (!isset($_SESSION['username'])) : ?>
 <body>
 <head>
     <title>KojtoSoft</title>
@@ -10,5 +11,8 @@
         <a href="users/login" id="login">Login</a>
         <a href="users/register" id="register">Register</a>
     </section>
+    <?php else: ?>
+       <?php header('Location: http://localhost:2020/ConferenceScheduler/users/mainPage')?>
+    <?php endif; ?>
 </main>
 </body>

@@ -16,17 +16,23 @@ class ConferencesController extends Controller
         if (isset($_POST{'addAdmins'}))
         {
             $user = UserRepository::create()->getOneByUsername($_POST['addAdmins']);
+            $userAlreadyAdded = false;
 
             foreach($this->conferencesAdministrators as $userAdmin => $value)
             {
-                if($value->getUsername() == $user->getUsername())
+                if ($value->getUsername() == $user->getUsername())
                 {
                     $this->view->error = 'User already added!';
+                    $userAlreadyAdded = true;
+                    break;
                 }
             }
 
-            Request::CurrentUser()->setRole('conference administrator');
-            array_push($this->conferencesAdministrators, $user);
+            if(!$userAlreadyAdded)
+            {
+                Request::CurrentUser()->SetRole('conference administrator');
+                array_push($this->conferencesAdministrators, $user);
+            }
         }
     }
 

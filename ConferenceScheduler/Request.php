@@ -3,6 +3,7 @@
 namespace ConferenceScheduler;
 
 use ConferenceScheduler\Repositories\UserRepository;
+use ConferenceScheduler\Controllers\Controller;
 
 class Request
 {
@@ -31,5 +32,10 @@ class Request
     public static function getAllConfAdmins()
     {
         return UserRepository::create()->getAllConfAdmins();
+    }
+
+    public static function getAllUsers()
+    {
+        return UserRepository::create()->getAll();
     }
 }

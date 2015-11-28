@@ -1,4 +1,3 @@
-<?php if (!$this->user): ?>
 <body>
 <head>
     <title>Login</title>
@@ -33,12 +32,6 @@
             </tr>
             <?php endif; ?>
         </table>
-        <?php else: ?>
-            <h1>Welcome <?=$this->user; ?></h1>
-            <a href="<?= $this->url('users', 'logout')?>">
-                logout
-            </a>
-        <?php endif; ?>
     </form>
 </main>
 </body>

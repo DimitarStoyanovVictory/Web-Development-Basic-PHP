@@ -12,14 +12,14 @@ body {
     font-size:40px;
 }
 
-#formAddAdministrators
-{
-    margin-left: 100px;
-}
-
 .tabledata
 {
     color: white;
+}
+
+.formForAdding
+{
+    margin-left: 100px;
 }
 
 

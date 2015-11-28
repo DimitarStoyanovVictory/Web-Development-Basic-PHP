@@ -8,6 +8,12 @@ class Conference
 
     private $conferenceAdministrators;
 
+    private $conferenceDays;
+
+    private $conferenceDate;
+
+
+
     private $venueName;
 
     private $venueHalls;
@@ -19,7 +25,7 @@ class Conference
     private $id;
 
     public function __construct(
-        $conferenceOwner, $venueName, $conferenceAdministrators = null,
+        $conferenceOwner, $venueName, $conferenceDays = null, $conferenceDate = null, $conferenceAdministrators = null,
         $venueHalls = null, $programPerDay = null, $speakers = null, $id = null)
     {
         $this->setConferenceOwner($conferenceOwner);
@@ -61,6 +67,29 @@ class Conference
     public function setConferenceAdministrators($conferenceAdministrators)
     {
         $this->conferenceAdministrators = $conferenceAdministrators;
+    }
+
+    public function getConferenceDays()
+    {
+        return $this->conferenceDays;
+    }
+
+    /**
+     * @param mixed $conferenceDays
+     */
+    public function setConferenceDays($conferenceDays)
+    {
+        $this->conferenceDays = $conferenceDays;
+    }
+
+    public function getConferenceDate()
+    {
+        return $this->conferenceDate;
+    }
+
+    public function setConferenceDate($conferenceDate)
+    {
+        $this->conferenceDate = $conferenceDate;
     }
 
     /**

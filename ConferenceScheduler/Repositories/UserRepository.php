@@ -119,6 +119,8 @@ class UserRepository
                 $row['id']
             );
         }
+
+        return $collection;
     }
 
     public function getAllConfAdmins()
